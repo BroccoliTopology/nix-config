@@ -21,6 +21,7 @@
 
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
+    ./desktop/sway.nix
   ];
 
   nixpkgs = {
@@ -108,9 +109,6 @@
       PasswordAuthentication = false;
     };
   };
-
-  # Security configuration
-  security.polkit.enable = true;
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "25.11";
