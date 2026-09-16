@@ -57,7 +57,7 @@
   home.sessionVariables = {
     EDITOR = "vim";
     VISUAL = "vim";
-    XDG_SCREENSHOTS_DIR = "~/Pictures/Screenshots";
+    XDG_SCREENSHOTS_DIR = "${config.home.homeDirectory}/Pictures/Screenshots";
   };
 
   # Add stuff for your user as you see fit:

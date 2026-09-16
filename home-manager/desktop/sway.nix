@@ -10,28 +10,6 @@ in {
     ./waybar.nix
     ./tofi.nix
   ];
-  # widgets
-  programs = {
-    tofi = {
-      enable = true;
-      settings = {
-        width = "100%";
-        height = "100%";
-        border-width = 0;
-        outline-width = 0;
-        padding-left = "35%";
-        padding-top = "35%";
-        result-spacing = 25;
-        num-results = 5;
-        font = "monospace";
-        background-color = "#000A";
-      };
-    };
-    waybar = {
-      enable = true;
-      systemd.enable = true;
-    };
-  };
 
   # Additional services
   services.cliphist.enable = true;
@@ -57,16 +35,17 @@ in {
         profile.outputs = [
           {
             criteria = "eDP-1";
-            scale = 2.0;
+            scale = 1.5;
             status = "enable";
             position = "0,0";
             mode = "2560x1440@240Hz";
           }
           {
-            criteria = "*";
+            criteria = "HDMI-A-1";
             scale = 2.0;
             status = "enable";
             position = "2560,0";
+            mode = "3840x2160@60Hz";
           }
         ];
       }
@@ -79,10 +58,17 @@ in {
     systemd.enable = true;
     wrapperFeatures = {gtk = true;};
     config = {
-      defaultWorkspace = "workspace 1";
-      focus.followMouse = true;
+      defaultWorkspace = "workspace 0";
+      focus.followMouse = false;
+      bars = [];
       workspaceAutoBackAndForth = true;
       modifier = mod;
+
+      # remove titlebar
+      window = {
+        titlebar = false;
+      };
+
       keybindings = {
 
         # Workspaces and Windows
@@ -134,12 +120,13 @@ in {
 
         # Program shortcuts
         "${mod}+Ctrl+l" = "exec ${pkgs.swaylock-fancy}/bin/swaylock-fancy";
-        "--release Print" = "exec --no-startup-id ${pkgs.sway-contrib.grimshot}/bin/grimshot copy area";
         "${mod}+Return" = "exec --no-startup-id ${pkgs.ghostty}/bin/ghostty";
-        "${mod}+d" = "exec --no-startup-id tofi-run";
-        "${mod}+Shift+d" = "exec --no-startup-id tofi-drun";
+        "${mod}+d" = ''
+          exec --no-startup-id tofi-drun --output "$(swaymsg -t get_outputs -r | jq -r '.[] | select(.focused).name')" --drun-launch=true
+        '';
+        "--release Print" =
+          ''exec --no-startup-id sh -c 'grim -g "$(slurp)" "$XDG_SCREENSHOTS_DIR/$(date +screenshot_%Y-%m-%d-%H%M%S.png)"' '';
       };
     };
   };
 }
-
