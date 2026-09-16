@@ -17,6 +17,7 @@
 
     # You can also split up your configuration and import pieces of it here:
     # ./nvim.nix
+    ./apps/default.nix
     ./programs/default.nix
     ./desktop/default.nix
   ];
@@ -90,5 +91,5 @@
   };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-  home.stateVersion = "25.11";
+  home.stateVersion = "26.05";
 }

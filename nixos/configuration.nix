@@ -66,12 +66,16 @@
     git
     vim
     curl
+    # hardware or infra
+    pciutils
   ];
 
-  boot.loader.grub = {
-    enable = true;
-    efiSupport = true;
-    device = "nodev";
+  boot.loader = {
+    systemd-boot.enable = true;
+    efi = {
+      canTouchEfiVariables = true;
+      efiSysMountPoint = "/boot";
+    };
   };
 
   # TODO: Set your hostname

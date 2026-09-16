@@ -1,13 +1,14 @@
 { ... }:
 
 {
-  programs.ghostty = {
+  programs.bash = {
     enable = true;
-    enableBashIntegration = true;
-    installBatSyntax = true;
-    installVimSyntax = true;
-    settings = {
-      theme = "Dracula+";
+    enableCompletion = true;
+    sessionVariables = {
+      NIX_CONFIG = "experimental-features = nix-command flakes";
+    };
+    shellAliases = {
+      yz = "yazi";
     };
   };
 }
