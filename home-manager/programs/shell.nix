@@ -7,7 +7,7 @@
     installBatSyntax = true;
     installVimSyntax = true;
     settings = {
-      theme = "dracula";
+      theme = "Dracula+";
     };
   };
 }
