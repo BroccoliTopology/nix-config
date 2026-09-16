@@ -6,13 +6,25 @@
 let mod = "Mod4";
 
 in {
+  imports = [
+    ./waybar.nix
+    ./tofi.nix
+  ];
   # widgets
   programs = {
-    wofi = {
+    tofi = {
       enable = true;
       settings = {
-        allow_markup = true;
-        width = 250;
+        width = "100%";
+        height = "100%";
+        border-width = 0;
+        outline-width = 0;
+        padding-left = "35%";
+        padding-top = "35%";
+        result-spacing = 25;
+        num-results = 5;
+        font = "monospace";
+        background-color = "#000A";
       };
     };
     waybar = {
@@ -33,9 +45,9 @@ in {
         profile.outputs = [
           {
             criteria = "eDP-1";
-            scale = 2.0;
+            scale = 1.5;
             status = "enable";
-            position = "0.0";
+            position = "0,0";
             mode = "2560x1440@240Hz";
           }
         ];
@@ -47,14 +59,14 @@ in {
             criteria = "eDP-1";
             scale = 2.0;
             status = "enable";
-            position = "0.0";
+            position = "0,0";
             mode = "2560x1440@240Hz";
           }
           {
             criteria = "*";
             scale = 2.0;
             status = "enable";
-            position = "0.0";
+            position = "2560,0";
           }
         ];
       }
@@ -107,6 +119,11 @@ in {
         "${mod}+Shift+q" = "exit";
         "${mod}+Shift+r" = "exec swaymsg reload";
 
+        # Volumn
+        "XF86AudioRaiseVolume" = "exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+";
+        "XF86AudioLowerVolume" = "exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-";
+        "XF86AudioMute" = "exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
+
         # Kill or Toggle Layout
         "${mod}+Shift+x" = "kill";
         "${mod}+w" = "layout tabbed";
@@ -119,7 +136,8 @@ in {
         "${mod}+Ctrl+l" = "exec ${pkgs.swaylock-fancy}/bin/swaylock-fancy";
         "--release Print" = "exec --no-startup-id ${pkgs.sway-contrib.grimshot}/bin/grimshot copy area";
         "${mod}+Return" = "exec --no-startup-id ${pkgs.ghostty}/bin/ghostty";
-        "${mod}+space" = "exec --no-startup-id wofi --show drun,run";
+        "${mod}+d" = "exec --no-startup-id tofi-run";
+        "${mod}+Shift+d" = "exec --no-startup-id tofi-drun";
       };
     };
   };

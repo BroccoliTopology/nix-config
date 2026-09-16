@@ -59,7 +59,7 @@
 
       " Looks
       set background=dark
-      colorscheme PaperColor
+      colorscheme dracula
       let g:airline#extensions#tabline#enabled = 1
       let g:airline#extensions#tabline#buffer_nr_show = 1
 
