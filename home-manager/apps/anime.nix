@@ -2,7 +2,7 @@
 
 {
   programs = {
-    anime-downloader = {
+    animdl = {
       enable = true;
     };
   };
