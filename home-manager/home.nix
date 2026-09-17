@@ -61,6 +61,10 @@
     XDG_SCREENSHOTS_DIR = "${config.home.homeDirectory}/Pictures/Screenshots";
   };
 
+  home.sessionPath = [
+    "$HOME/.cargo/bin"
+  ];
+
   # Add stuff for your user as you see fit:
   # programs.neovim.enable = true;
   # home.packages = with pkgs; [ steam ];
