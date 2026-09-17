@@ -9,6 +9,7 @@
     };
     shellAliases = {
       yz = "yazi";
+      e = "exit";
     };
   };
 }

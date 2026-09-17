@@ -1,6 +1,6 @@
 {
   imports = [
-    ./anime.nix
+    # ./anime.nix
     ./browser.nix
     ./players.nix
   ];
