@@ -7,6 +7,7 @@
     jq.enable = true;
     fzf.enable = true;
     ripgrep.enable = true;
+    asciinema.enable = true;
     yazi = {
       enable = true;
       enableBashIntegration = true;

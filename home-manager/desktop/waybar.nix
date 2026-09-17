@@ -76,7 +76,7 @@
           timezone = "America/New_York";
           tooltip-format =
             "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
-          format = "{:%d/%m/%Y - %H:%M:%S}";
+          format = "{:%Y%m%d-%H%M%S}";
           interval = 1;
         };
 

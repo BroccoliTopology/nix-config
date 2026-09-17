@@ -6,5 +6,6 @@
     ./shell.nix
     ./terminal.nix
     ./vim.nix
+    ./bluetooth.nix
   ];
 }
