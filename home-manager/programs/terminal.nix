@@ -9,7 +9,7 @@
     settings = {
       theme = "Dracula";
       font-family = "FiraCode Nerd Font";
-      font-size = 12;
+      font-size = 14;
     };
   };
 }

@@ -20,6 +20,7 @@
     ./apps/default.nix
     ./programs/default.nix
     ./desktop/default.nix
+    ./development/default.nix
   ];
 
   nixpkgs = {
@@ -63,33 +64,9 @@
   # Add stuff for your user as you see fit:
   # programs.neovim.enable = true;
   # home.packages = with pkgs; [ steam ];
-
-  # Enable home-manager and git
-  programs = {
-    home-manager.enable = true;
-    jq.enable = true;
-    yazi.enable = true;
-    bash = {
-      enable = true;
-      enableCompletion = true;
-      sessionVariables = {
-        NIX_CONFIG = "experimental-features = nix-command flakes";
-      };
-    };
-    git = {
-      enable = true;
-      settings = {
-        init.defaultBranch = "main";
-        core = {
-          editor = "vim";
-        };
-        user = {
-          email = "samuelw3068@gmail.com";
-          name = "samuelw";
-        };
-      };
-    };
-  };
+  home.packages = with pkgs; [
+    brightnessctl
+  ];
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   home.stateVersion = "26.05";

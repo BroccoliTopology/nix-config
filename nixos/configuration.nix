@@ -79,6 +79,16 @@
     };
   };
 
+  # NVIDIA
+  # services.xserver.videoDrivers = [ "nvidia" ];
+  # hardware.graphics.enable = true;
+  # hardware.nvidia = {
+  #   modesetting.enable = true;
+  #   # RTX 4060 supports the open kernel module.
+  #   open = true;
+  #   package = config.boot.kernelPackages.nvidiaPackages.stable;
+  # };
+
   # TODO: Set your hostname
   networking = {
     hostName = "hp-omen";

@@ -15,13 +15,13 @@
 
         modules-center = [
           "clock"
-          "custom/weather"
+          # "custom/weather"
         ];
 
         modules-right = [
           "pulseaudio"
           "custom/uptime"
-          "backlight"
+          # "backlight"
           "battery"
           "network"
           "cpu"
@@ -38,6 +38,23 @@
             default = "";
             focused = "";
           };
+        };
+
+        "battery" = {
+          "interval" = 30;
+          "states" = {
+            "good" = 95;
+            "warning" = 30;
+            "critical" = 15;
+          };
+          "format" = "{icon} {capacity}%";
+          "format-icons" = [
+            ""
+            ""
+            ""
+            ""
+            ""
+          ];
         };
 
         tray = {
@@ -122,7 +139,7 @@
     style = ''
       * {
         font-family: Hack Nerd Font Propo;
-        font-size: 14px;
+        font-size: 16px;
         min-height: 0;
         padding-right: 2px;
         padding-left: 2px;

@@ -1,5 +1,6 @@
 {
   pkgs,
+  lib,
   ...
 }:
 
@@ -23,7 +24,7 @@ in {
         profile.outputs = [
           {
             criteria = "eDP-1";
-            scale = 1.5;
+            scale = 1.7;
             status = "enable";
             position = "0,0";
             mode = "2560x1440@240Hz";
@@ -35,13 +36,13 @@ in {
         profile.outputs = [
           {
             criteria = "eDP-1";
-            scale = 1.5;
+            scale = 1.7;
             status = "enable";
             position = "0,0";
             mode = "2560x1440@240Hz";
           }
           {
-            criteria = "HDMI-A-1";
+            criteria = "*";
             scale = 2.0;
             status = "enable";
             position = "2560,0";
@@ -68,6 +69,29 @@ in {
       window = {
         titlebar = false;
       };
+
+      # workspace mappings to monitors
+      workspaceOutputAssign =
+        (map
+          (n: {
+            workspace = toString n;
+            output = [ "eDP-1" "HDMI-A-1" "DP-1" "DP-2" ];
+          })
+          (lib.range 0 3))
+        ++
+        (map
+          (n: {
+            workspace = toString n;
+            output = [ "DP-1" "DP-2" "HDMI-A-1" "eDP-1" ];
+          })
+          (lib.range 4 6))
+        ++
+        (map
+          (n: {
+            workspace = toString n;
+            output = [ "DP-2" "DP-1" "HDMI-A-1" "eDP-1" ];
+          })
+          (lib.range 4 6));
 
       keybindings = {
 
