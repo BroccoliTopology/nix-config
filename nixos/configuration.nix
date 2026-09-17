@@ -22,6 +22,7 @@
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
     ./components/fonts.nix
+    ./components/bluetooth.nix
     ./desktop/sway.nix
   ];
 
