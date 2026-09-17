@@ -18,7 +18,7 @@
     # You can also split up your configuration and import pieces of it here:
     # ./nvim.nix
     ./apps/default.nix
-    ./programs/default.nix
+    ./cli/default.nix
     ./desktop/default.nix
     ./development/default.nix
   ];
