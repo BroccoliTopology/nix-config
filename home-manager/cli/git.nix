@@ -1,7 +1,7 @@
 { ... }:
 
 {
-  programs= {
+  programs = {
     git = {
       enable = true;
       settings = {

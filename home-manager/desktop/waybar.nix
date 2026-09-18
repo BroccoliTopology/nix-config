@@ -1,11 +1,17 @@
-{ ... }:
+{ lib, ... }:
+
+let
+  bar_font = "MesloLGMDZ Nerd Font";
+in
 
 {
   programs.waybar = {
     enable = true;
-    systemd.enable = true;
+    systemd.enable = false;
     settings = {
       mainBar = {
+        on-sigusr1 = "toggle";
+        on-sigusr2 = "reload";
         layer = "top";
         position = "top";
 
@@ -33,11 +39,13 @@
         ];
 
         "sway/workspaces" = {
-          format = "{name}: {icon}";
+          format = "{name} {icon} ";
           format-icons = {
-            default = "";
-            focused = "";
+            default = "";
+            focused = "";
+            persistent = "⭘";
           };
+          "persistent-workspaces" = lib.genAttrs (map toString (lib.range 0 9)) (_: [ ]);
         };
 
         "battery" = {
@@ -74,9 +82,8 @@
 
         clock = {
           timezone = "America/New_York";
-          tooltip-format =
-            "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
-          format = "{:%Y%m%d-%H%M%S}";
+          tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
+          format = "[{:%Y%m%d-%H%M%S}]";
           interval = 1;
         };
 
@@ -138,7 +145,7 @@
     };
     style = ''
       * {
-        font-family: Hack Nerd Font Propo;
+        font-family: ${bar_font};
         font-size: 16px;
         min-height: 0;
         padding-right: 2px;
@@ -296,5 +303,3 @@
     '';
   };
 }
-
-

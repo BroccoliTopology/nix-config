@@ -8,15 +8,6 @@
     fzf.enable = true;
     ripgrep.enable = true;
     asciinema.enable = true;
-    yazi = {
-      enable = true;
-      enableBashIntegration = true;
-      settings = {
-        mgr = {
-          ratio = [ 1 3 4 ];
-          show_hidden = true;
-        };
-      };
-    };
+    yt-dlp.enable = true;
   };
 }

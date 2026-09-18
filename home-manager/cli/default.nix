@@ -5,7 +5,9 @@
     ./pgms.nix
     ./shell.nix
     ./terminal.nix
-    ./vim.nix
+    ./tmux.nix
+    ./vim/default.nix
     ./bluetooth.nix
+    ./yazi.nix
   ];
 }

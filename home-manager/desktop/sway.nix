@@ -4,9 +4,11 @@
   ...
 }:
 
-let mod = "Mod4";
+let
+  mod = "Mod4";
 
-in {
+in
+{
   imports = [
     ./waybar.nix
     ./tofi.nix
@@ -24,7 +26,7 @@ in {
         profile.outputs = [
           {
             criteria = "eDP-1";
-            scale = 1.7;
+            scale = 1.6;
             status = "enable";
             position = "0,0";
             mode = "2560x1440@240Hz";
@@ -36,8 +38,8 @@ in {
         profile.outputs = [
           {
             criteria = "eDP-1";
-            scale = 1.7;
-            status = "enable";
+            scale = 1.6;
+            status = "disable";
             position = "0,0";
             mode = "2560x1440@240Hz";
           }
@@ -57,11 +59,13 @@ in {
   wayland.windowManager.sway = {
     enable = true;
     systemd.enable = true;
-    wrapperFeatures = {gtk = true;};
+    wrapperFeatures = {
+      gtk = true;
+    };
     config = {
       defaultWorkspace = "workspace 0";
       focus.followMouse = false;
-      bars = [];
+      bars = [ ];
       workspaceAutoBackAndForth = true;
       modifier = mod;
 
@@ -70,28 +74,47 @@ in {
         titlebar = false;
       };
 
+      # startup
+      startup = [
+        {
+          command = "waybar";
+          always = false;
+        }
+        {
+          command = "systemctl --user restart --now kanshi.service";
+          always = true;
+        }
+      ];
+
       # workspace mappings to monitors
       workspaceOutputAssign =
-        (map
-          (n: {
-            workspace = toString n;
-            output = [ "eDP-1" "HDMI-A-1" "DP-1" "DP-2" ];
-          })
-          (lib.range 0 3))
-        ++
-        (map
-          (n: {
-            workspace = toString n;
-            output = [ "DP-1" "DP-2" "HDMI-A-1" "eDP-1" ];
-          })
-          (lib.range 4 6))
-        ++
-        (map
-          (n: {
-            workspace = toString n;
-            output = [ "DP-2" "DP-1" "HDMI-A-1" "eDP-1" ];
-          })
-          (lib.range 4 6));
+        (map (n: {
+          workspace = toString n;
+          output = [
+            "HDMI-A-1"
+            "eDP-1"
+            "DP-1"
+            "DP-2"
+          ];
+        }) (lib.range 0 3))
+        ++ (map (n: {
+          workspace = toString n;
+          output = [
+            "DP-1"
+            "DP-2"
+            "HDMI-A-1"
+            "eDP-1"
+          ];
+        }) (lib.range 4 6))
+        ++ (map (n: {
+          workspace = toString n;
+          output = [
+            "DP-2"
+            "DP-1"
+            "HDMI-A-1"
+            "eDP-1"
+          ];
+        }) (lib.range 7 9));
 
       keybindings = {
 
@@ -124,12 +147,13 @@ in {
         "${mod}+Shift+l" = "move right";
         "${mod}+Shift+j" = "move down";
         "${mod}+Shift+k" = "move up";
+        "${mod}+f" = "fullscreen toggle";
 
         # Controlling sway itself
         "${mod}+Shift+q" = "exit";
         "${mod}+Shift+r" = "exec swaymsg reload";
 
-        # Volumn
+        # Volume
         "XF86AudioRaiseVolume" = "exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+";
         "XF86AudioLowerVolume" = "exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-";
         "XF86AudioMute" = "exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
@@ -141,6 +165,12 @@ in {
         "${mod}+e" = "layout toggle split";
         "${mod}+g" = "split h";
         "${mod}+v" = "split v";
+
+        # Reload kanshi
+        "${mod}+m" = "exec --no-startup-id systemctl --user restart --now kanshi.service";
+
+        # Toggle waybar
+        "${mod}+Shift+b" = "exec --no-startup-id pkill -SIGUSR1 waybar";
 
         # Program shortcuts
         "${mod}+Ctrl+l" = "exec ${pkgs.swaylock-fancy}/bin/swaylock-fancy";

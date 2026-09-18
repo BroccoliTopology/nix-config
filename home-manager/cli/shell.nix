@@ -10,6 +10,7 @@
     shellAliases = {
       yz = "yazi";
       e = "exit";
+      tm = "tmux";
     };
   };
 }

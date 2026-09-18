@@ -94,6 +94,7 @@
   networking = {
     hostName = "hp-omen";
     networkmanager.enable = true;
+    useDHCP = false;
   };
 
   # TODO: Configure your system-wide user settings (groups, etc), add more users as needed.
