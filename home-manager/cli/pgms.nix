@@ -9,5 +9,9 @@
     ripgrep.enable = true;
     asciinema.enable = true;
     yt-dlp.enable = true;
+    zoxide = {
+      enable = true;
+      enableBashIntegration = true;
+    };
   };
 }
