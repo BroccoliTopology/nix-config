@@ -29,7 +29,7 @@ in
             scale = 1.6;
             status = "enable";
             position = "0,0";
-            mode = "2560x1440@240Hz";
+            mode = "2560x1440@60Hz";
           }
         ];
       }
@@ -41,7 +41,7 @@ in
             scale = 1.6;
             status = "disable";
             position = "0,0";
-            mode = "2560x1440@240Hz";
+            mode = "2560x1440@60Hz";
           }
           {
             criteria = "*";
@@ -159,7 +159,7 @@ in
         "XF86AudioMute" = "exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
 
         # Kill or Toggle Layout
-        "${mod}+Shift+x" = "kill";
+        "${mod}+q" = "kill";
         "${mod}+w" = "layout tabbed";
         "${mod}+s" = "layout stacking";
         "${mod}+e" = "layout toggle split";
