@@ -23,6 +23,7 @@
     ./hardware-configuration.nix
     ./components/fonts.nix
     ./components/bluetooth.nix
+    ./components/keyboard.nix
     ./desktop/sway.nix
   ];
 

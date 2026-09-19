@@ -9,6 +9,11 @@
     ripgrep.enable = true;
     asciinema.enable = true;
     yt-dlp.enable = true;
+
+    eza = {
+      enable = true;
+      enableBashIntegration = true;
+    };
     zoxide = {
       enable = true;
       enableBashIntegration = true;

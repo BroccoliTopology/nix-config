@@ -63,11 +63,47 @@ in
       gtk = true;
     };
     config = {
+      workspaceLayout = "tabbed";
       defaultWorkspace = "workspace 0";
-      focus.followMouse = false;
+      focus = {
+        followMouse = false;
+        wrapping = "yes";
+      };
       bars = [ ];
       workspaceAutoBackAndForth = true;
       modifier = mod;
+
+      # some looks configs
+      fonts = {
+        names = [ "JetBrainsMono Nerd Font" ];
+        size = 10.0;
+      };
+
+      colors = {
+        focused = {
+          border = "#1e1e1e";
+          background = "#1e1e1e";
+          text = "#ffffff";
+          indicator = "#1e1e1e";
+          childBorder = "#1e1e1e";
+        };
+
+        focusedInactive = {
+          border = "#161616";
+          background = "#161616";
+          text = "#888888";
+          indicator = "#161616";
+          childBorder = "#161616";
+        };
+
+        unfocused = {
+          border = "#101010";
+          background = "#101010";
+          text = "#666666";
+          indicator = "#101010";
+          childBorder = "#101010";
+        };
+      };
 
       # remove titlebar
       window = {
@@ -175,6 +211,8 @@ in
         # Program shortcuts
         "${mod}+Ctrl+l" = "exec ${pkgs.swaylock-fancy}/bin/swaylock-fancy";
         "${mod}+Return" = "exec --no-startup-id ${pkgs.ghostty}/bin/ghostty";
+        "${mod}+Ctrl+s" = "exec --no-startup-id ${pkgs.spotify}/bin/spotify";
+        "${mod}+Ctrl+w" = "exec --no-startup-id ${pkgs.firefox}/bin/firefox";
         "${mod}+d" = ''
           exec --no-startup-id tofi-drun --output "$(swaymsg -t get_outputs -r | jq -r '.[] | select(.focused).name')" --drun-launch=true
         '';

@@ -2,10 +2,7 @@
 
 {
   programs = {
-    mpv = {
-      enable = true;
-    };
-    spotify-player = {
+    firefox = {
       enable = true;
     };
   };
