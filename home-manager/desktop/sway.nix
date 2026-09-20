@@ -11,7 +11,7 @@ in
 {
   imports = [
     ./waybar.nix
-    ./tofi.nix
+    ./launchers/rofi.nix
   ];
 
   # Additional services
@@ -76,6 +76,7 @@ in
       # some looks configs
       fonts = {
         names = [ "JetBrainsMono Nerd Font" ];
+        # names = [ "Iosevka Nerd Font Mono" ];
         size = 10.0;
       };
 
@@ -186,6 +187,7 @@ in
         "${mod}+f" = "fullscreen toggle";
 
         # Controlling sway itself
+        "${mod}+p" = "exec poweroff";
         "${mod}+Shift+q" = "exit";
         "${mod}+Shift+r" = "exec swaymsg reload";
 
@@ -209,12 +211,12 @@ in
         "${mod}+Shift+b" = "exec --no-startup-id pkill -SIGUSR1 waybar";
 
         # Program shortcuts
-        "${mod}+Ctrl+l" = "exec ${pkgs.swaylock-fancy}/bin/swaylock-fancy";
+        "${mod}+Ctrl+Alt_R+l" = "exec ${pkgs.swaylock-fancy}/bin/swaylock-fancy";
         "${mod}+Return" = "exec --no-startup-id ${pkgs.ghostty}/bin/ghostty";
         "${mod}+Ctrl+s" = "exec --no-startup-id ${pkgs.spotify}/bin/spotify";
         "${mod}+Ctrl+w" = "exec --no-startup-id ${pkgs.firefox}/bin/firefox";
         "${mod}+d" = ''
-          exec --no-startup-id tofi-drun --output "$(swaymsg -t get_outputs -r | jq -r '.[] | select(.focused).name')" --drun-launch=true
+          exec --no-startup-id rofi -show drun -m "$(swaymsg -t get_outputs -r | jq -r '.[] | select(.focused).name')"
         '';
         "--release Print" =
           ''exec --no-startup-id sh -c 'grim -g "$(slurp)" "$XDG_SCREENSHOTS_DIR/$(date +screenshot_%Y-%m-%d-%H%M%S.png)"' '';

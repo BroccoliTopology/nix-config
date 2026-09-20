@@ -13,6 +13,7 @@ let
     # ./snippets/vsnip.vim
 
     ./vim-lsp/base.vim
+    ./vim-lsp/go.vim
     ./vim-lsp/python.vim
     ./vim-lsp/rust.vim
     ./vim-lsp/toml.vim

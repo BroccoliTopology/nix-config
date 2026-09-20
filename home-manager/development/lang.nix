@@ -14,6 +14,10 @@
 
     # vim
     vim-language-server
+
+    # go
+    go
+    gopls
   ];
   programs = {
     gcc = {

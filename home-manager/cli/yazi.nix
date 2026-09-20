@@ -23,6 +23,7 @@
             desc = "Play video";
             run = ''mpv "$@"'';
             orphan = true;
+            block = false;
           }
         ];
         edit = [
@@ -30,6 +31,14 @@
             desc = "Edit with text editor";
             run = "$EDITOR %s";
             block = true;
+          }
+        ];
+        view_pdf = [
+          {
+            desc = "View pdf";
+            run = "zathura %s";
+            orphan = true;
+            block = false;
           }
         ];
       };
@@ -40,6 +49,10 @@
           {
             mime = "video/*";
             use = "play_video";
+          }
+          {
+            mime = "application/pdf";
+            use = "view_pdf";
           }
         ];
       };
