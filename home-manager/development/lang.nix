@@ -7,6 +7,7 @@
 
     # python
     uv
+    python3
 
     # nix
     nixfmt
