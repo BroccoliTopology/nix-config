@@ -56,6 +56,14 @@
           }
         ];
       };
+
+      # disable pdf preview
+      plugin.prepend_previewers = [
+        {
+          mime = "application/pdf";
+          run = "noop";
+        }
+      ];
     };
   };
 }

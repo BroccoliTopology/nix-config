@@ -13,4 +13,13 @@
       tm = "tmux";
     };
   };
+  programs.starship = {
+    enable = true;
+    presets = [
+      "nerd-font-symbols"
+      # "gruvbox-rainbow"
+      "catppuccin-powerline"
+      # "jetpack"
+    ];
+  };
 }

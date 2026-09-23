@@ -5,5 +5,7 @@
     ./players.nix
     ./zathura.nix
     ./obs.nix
+    ./obsidian.nix
+    # ./ai/opencode.nix
   ];
 }

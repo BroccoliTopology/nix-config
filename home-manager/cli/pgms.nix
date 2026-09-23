@@ -4,7 +4,6 @@
   # pgms that are not home manager programs
   home.packages = with pkgs; [
     ffmpeg
-    poppler-utils
   ];
 
   # pgms that are home manager programs

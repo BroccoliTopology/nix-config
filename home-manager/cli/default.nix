@@ -9,5 +9,6 @@
     ./vim/default.nix
     ./bluetooth.nix
     ./yazi.nix
+    ./pdf.nix
   ];
 }
