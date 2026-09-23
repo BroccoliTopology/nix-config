@@ -207,6 +207,9 @@ in
         # Reload kanshi
         "${mod}+m" = "exec --no-startup-id systemctl --user restart --now kanshi.service";
 
+        # Dismiss sway notification
+        "${mod}+x" = "exec --no-startup-id makoctl dismiss -a";
+
         # Toggle waybar
         "${mod}+Shift+b" = "exec --no-startup-id pkill -SIGUSR1 waybar";
 

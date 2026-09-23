@@ -1,11 +1,13 @@
 {
   imports = [
     ./browser.nix
-    ./daw.nix
     ./players.nix
     ./zathura.nix
     ./obs.nix
-    ./obsidian.nix
+    # ./note-taking/obsidian.nix
     # ./ai/opencode.nix
+    ./office/libre.nix
+    ./music-prod/daw.nix
+    ./music-prod/sheet.nix
   ];
 }

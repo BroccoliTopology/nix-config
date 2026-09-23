@@ -20,6 +20,7 @@
     go
     gopls
   ];
+
   programs = {
     gcc = {
       enable = true;
