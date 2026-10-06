@@ -18,6 +18,8 @@ let
     ./vim-lsp/rust.vim
     ./vim-lsp/toml.vim
     ./vim-lsp/vim.vim
+    # ./vim-lsp/scala.vim
+    ./vim-lsp/tf.vim
   ];
 in
 

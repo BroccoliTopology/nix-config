@@ -15,10 +15,23 @@
 
     # vim
     vim-language-server
+    taplo
 
     # go
     go
     gopls
+
+    # hashilang
+    terraform-ls
+
+    # scala
+    # scala
+    # scalafmt
+    # jdk17
+    # sbt
+    # coursier
+    # bloop
+    # metals
   ];
 
   programs = {

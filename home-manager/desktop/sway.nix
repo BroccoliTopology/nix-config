@@ -73,6 +73,14 @@ in
       workspaceAutoBackAndForth = true;
       modifier = mod;
 
+      # let right-click work
+      input = {
+        "type:touchpad" = {
+          tap = "enabled";
+          click_method = "button_areas";
+        };
+      };
+
       # some looks configs
       fonts = {
         names = [ "JetBrainsMono Nerd Font" ];

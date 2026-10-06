@@ -3,6 +3,8 @@
 {
   home.packages = with pkgs; [
     docker
+    docker-compose
+    lazydocker
     terraform
   ];
 }

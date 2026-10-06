@@ -15,6 +15,7 @@
     ripgrep.enable = true;
     asciinema.enable = true;
     yt-dlp.enable = true;
+    btop.enable = true;
 
     bat = {
       enable = true;

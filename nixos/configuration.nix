@@ -6,7 +6,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   # You can import other NixOS modules here
   imports = [
     # If you want to use modules your own flake exports (from modules/nixos):
@@ -111,7 +112,10 @@
         # TODO: Add your SSH public key(s) here, if you plan on using SSH to connect
       ];
       # TODO: Be sure to add any other groups you need (such as networkmanager, audio, docker, etc)
-      extraGroups = ["wheel"];
+      extraGroups = [
+        "wheel"
+        "docker"
+      ];
     };
   };
 
@@ -128,6 +132,12 @@
     };
   };
 
+  # Update timezone
+  services.automatic-timezoned.enable = true;
+
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "26.05";
+
+  # virtualization
+  virtualisation.docker.enable = true;
 }

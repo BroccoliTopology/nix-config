@@ -63,6 +63,10 @@
           mime = "application/pdf";
           run = "noop";
         }
+        {
+          mime = "image/svg+xml";
+          run = "noop";
+        }
       ];
     };
   };

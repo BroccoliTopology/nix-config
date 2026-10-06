@@ -9,5 +9,6 @@
     ./office/libre.nix
     ./music-prod/daw.nix
     ./music-prod/sheet.nix
+    ./work.nix
   ];
 }

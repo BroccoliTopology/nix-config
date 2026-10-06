@@ -1,7 +1,7 @@
 { lib, ... }:
 
 let
-  bar_font = "MesloLGMDZ Nerd Font";
+  bar_font = "JetBrainsMono Nerd Font Mono";
 in
 
 {
@@ -146,7 +146,7 @@ in
     style = ''
       * {
         font-family: ${bar_font};
-        font-size: 16px;
+        font-size: 13px;
         min-height: 0;
         padding-right: 2px;
         padding-left: 2px;
@@ -162,7 +162,7 @@ in
       #workspaces {
         border-radius: 5px;
         margin: 5px;
-        background: #101010;
+        background: transparent;
         margin-left: 2px;
       }
 
@@ -182,7 +182,7 @@ in
       }
 
       #workspaces button:hover {
-        background: #1e1e1e;
+        background: transparent;
         border: 0px solid transparent;
       }
 
@@ -200,7 +200,7 @@ in
       #custom-weather,
       #custom-uptime,
       #custom-docker {
-        background-color: #101010;
+        background-color: transparent;
         padding: 0.5rem 1rem;
         margin: 5px 0;
       }

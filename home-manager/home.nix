@@ -64,6 +64,7 @@
 
   home.sessionPath = [
     "$HOME/.cargo/bin"
+    "$HOME/.local/share/coursier/bin"
   ];
 
   # Add stuff for your user as you see fit:

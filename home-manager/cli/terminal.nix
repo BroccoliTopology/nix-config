@@ -10,7 +10,7 @@
       theme = "Dracula";
       # font-family = "FiraCode Nerd Font";
       font-family = "JetBrainsMono Nerd Font Mono";
-      font-size = 14;
+      font-size = 12;
     };
   };
 }
