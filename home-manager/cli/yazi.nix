@@ -58,16 +58,19 @@
       };
 
       # disable pdf preview
-      plugin.prepend_previewers = [
-        {
-          mime = "application/pdf";
-          run = "noop";
-        }
-        {
-          mime = "image/svg+xml";
-          run = "noop";
-        }
-      ];
+      plugin = {
+        max_width = 800;
+        max_height = 600;
+        prepend_previewers = [
+          {
+            mime = "application/pdf";
+            run = "noop";
+          }          {
+            mime = "image/*";
+            run = "noop";
+          }
+        ];
+      };
     };
   };
 }
