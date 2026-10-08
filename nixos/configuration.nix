@@ -72,25 +72,22 @@
     curl
     # hardware or infra
     pciutils
+    lshw
   ];
 
-  boot.loader = {
-    systemd-boot.enable = true;
-    efi = {
-      canTouchEfiVariables = true;
-      efiSysMountPoint = "/boot";
+  boot = {
+    kernelParams = [
+      "quiet"
+      "splash"
+    ];
+    loader = {
+      systemd-boot.enable = true;
+      efi = {
+        canTouchEfiVariables = true;
+        efiSysMountPoint = "/boot";
+      };
     };
   };
-
-  # NVIDIA
-  # services.xserver.videoDrivers = [ "nvidia" ];
-  # hardware.graphics.enable = true;
-  # hardware.nvidia = {
-  #   modesetting.enable = true;
-  #   # RTX 4060 supports the open kernel module.
-  #   open = true;
-  #   package = config.boot.kernelPackages.nvidiaPackages.stable;
-  # };
 
   # TODO: Set your hostname
   networking = {
@@ -106,7 +103,7 @@
       # TODO: You can set an initial password for your user.
       # If you do, you can skip setting a root password by passing '--no-root-passwd' to nixos-install.
       # Be sure to change it (using passwd) after rebooting!
-      initialPassword = "asdf";
+      # initialPassword = "asdf";
       isNormalUser = true;
       openssh.authorizedKeys.keys = [
         # TODO: Add your SSH public key(s) here, if you plan on using SSH to connect
@@ -121,19 +118,47 @@
 
   # This setups a SSH server. Very important if you're setting up a headless system.
   # Feel free to remove if you don't need it.
-  services.openssh = {
-    enable = true;
-    settings = {
-      # Opinionated: forbid root login through SSH.
-      PermitRootLogin = "no";
-      # Opinionated: use keys only.
-      # Remove if you want to SSH using passwords
-      PasswordAuthentication = false;
+  services = {
+    # Intercepts calls to traditional paths
+    envfs.enable = true;
+
+    # Update timezone
+    automatic-timezoned.enable = true;
+
+    # openssh
+    openssh = {
+      enable = true;
+      settings = {
+        # Opinionated: forbid root login through SSH.
+        PermitRootLogin = "no";
+        # Opinionated: use keys only.
+        # Remove if you want to SSH using passwords
+        PasswordAuthentication = false;
+      };
+    };
+
+    # pipewire
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+      jack.enable = true;
     };
   };
 
-  # Update timezone
-  services.automatic-timezoned.enable = true;
+  # NVIDIA
+  services.xserver.videoDrivers = [ "nvidia" ];
+  hardware = {
+    graphics.enable = true;
+    nvidia = {
+      modesetting.enable = true;
+      # RTX 4060 supports the open kernel module.
+      open = true;
+      nvidiaSettings = true;
+      package = config.boot.kernelPackages.nvidiaPackages.stable;
+    };
+  };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "26.05";

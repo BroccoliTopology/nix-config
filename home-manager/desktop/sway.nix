@@ -59,9 +59,8 @@ in
   wayland.windowManager.sway = {
     enable = true;
     systemd.enable = true;
-    wrapperFeatures = {
-      gtk = true;
-    };
+    extraOptions = [ "--unsupported-gpu" ];
+    wrapperFeatures.gtk = true;
     config = {
       workspaceLayout = "tabbed";
       defaultWorkspace = "workspace 0";
