@@ -27,7 +27,7 @@
     # scala
     # scala
     # scalafmt
-    # jdk17
+    jdk21_headless
     # sbt
     # coursier
     # bloop
