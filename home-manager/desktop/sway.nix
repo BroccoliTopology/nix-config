@@ -199,10 +199,14 @@ in
         "${mod}+Shift+q" = "exit";
         "${mod}+Shift+r" = "exec swaymsg reload";
 
-        # Volume
+        # Volume and Backlight
         "XF86AudioRaiseVolume" = "exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+";
         "XF86AudioLowerVolume" = "exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-";
         "XF86AudioMute" = "exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
+        "XF86MonBrightnessUp" = "exec brightnessctl set 5%+";
+        "XF86MonBrightnessDown" = "exec brightnessctl set 5%-";
+        "XF86Mail" = "exec brightnessctl set 5%-";
+        "XF86Search" = "exec brightnessctl set 5%+";
 
         # Kill or Toggle Layout
         "${mod}+q" = "kill";
@@ -228,7 +232,7 @@ in
           "exec sh -c 'swaymsg seat - cursor press button3; sleep 0.05; swaymsg seat - cursor release button3'";
 
         # Program shortcuts
-        "${mod}+Ctrl+Alt_R+l" = "exec ${pkgs.swaylock-fancy}/bin/swaylock-fancy";
+        "${mod}+Ctrl+Alt+l" = "exec ${pkgs.swaylock-fancy}/bin/swaylock-fancy";
         "${mod}+Return" = "exec --no-startup-id ${pkgs.ghostty}/bin/ghostty";
         "${mod}+Ctrl+s" = "exec --no-startup-id ${pkgs.spotify}/bin/spotify";
         "${mod}+Ctrl+w" = "exec --no-startup-id ${pkgs.firefox}/bin/firefox";

@@ -41,8 +41,8 @@ in
         "sway/workspaces" = {
           format = "{name} {icon} ";
           format-icons = {
-            default = "";
-            focused = "";
+            default = "";
+            focused = "";
             persistent = "⭘";
           };
           persistent-workspaces = lib.genAttrs (map toString (lib.range 0 9)) (_: [ ]);

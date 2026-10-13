@@ -7,6 +7,7 @@
     # ./note-taking/obsidian.nix
     # ./ai/opencode.nix
     ./office/libre.nix
+    ./office/mdp.nix
     ./music-prod/daw.nix
     ./music-prod/sheet.nix
     ./work.nix
