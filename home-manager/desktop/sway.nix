@@ -71,6 +71,7 @@ in
       bars = [ ];
       workspaceAutoBackAndForth = true;
       modifier = mod;
+      floating.modifier = "Mod1";
 
       # let right-click work
       input = {
@@ -89,11 +90,11 @@ in
 
       colors = {
         focused = {
-          border = "#1e1e1e";
+          border = "#ffffff";
           background = "#1e1e1e";
           text = "#ffffff";
           indicator = "#1e1e1e";
-          childBorder = "#1e1e1e";
+          childBorder = "#ffffff";
         };
 
         focusedInactive = {
@@ -219,6 +220,12 @@ in
 
         # Toggle waybar
         "${mod}+Shift+b" = "exec --no-startup-id pkill -SIGUSR1 waybar";
+
+        # Simulate mouse clicks
+        "${mod}+c" =
+          "exec sh -c 'swaymsg seat - cursor press button1; sleep 0.05; swaymsg seat - cursor release button1'";
+        "${mod}+Shift+c" =
+          "exec sh -c 'swaymsg seat - cursor press button3; sleep 0.05; swaymsg seat - cursor release button3'";
 
         # Program shortcuts
         "${mod}+Ctrl+Alt_R+l" = "exec ${pkgs.swaylock-fancy}/bin/swaylock-fancy";

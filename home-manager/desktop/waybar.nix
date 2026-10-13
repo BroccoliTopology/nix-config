@@ -25,9 +25,9 @@ in
         ];
 
         modules-right = [
+          # "custom/uptime"
           "pulseaudio"
-          "custom/uptime"
-          # "backlight"
+          "backlight"
           "battery"
           "network"
           "cpu"
@@ -45,18 +45,27 @@ in
             focused = "";
             persistent = "⭘";
           };
-          "persistent-workspaces" = lib.genAttrs (map toString (lib.range 0 9)) (_: [ ]);
+          persistent-workspaces = lib.genAttrs (map toString (lib.range 0 9)) (_: [ ]);
         };
 
-        "battery" = {
-          "interval" = 30;
-          "states" = {
-            "good" = 95;
-            "warning" = 30;
-            "critical" = 15;
+        backlight = {
+          scroll-step = 5;
+          format = "{icon} {percent}%";
+          format-icons = [
+            "☾"
+            "☼"
+          ];
+        };
+
+        battery = {
+          interval = 30;
+          states = {
+            good = 95;
+            warning = 30;
+            critical = 15;
           };
-          "format" = "{icon} {capacity}%";
-          "format-icons" = [
+          format = "{icon} {capacity}%";
+          format-icons = [
             ""
             ""
             ""
@@ -83,7 +92,7 @@ in
         clock = {
           timezone = "America/New_York";
           tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
-          format = "[{:%Y%m%d-%H%M%S}]";
+          format = "{:%Y%m%d-%H%M%S}";
           interval = 1;
         };
 

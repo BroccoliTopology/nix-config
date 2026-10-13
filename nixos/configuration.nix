@@ -79,6 +79,9 @@
     kernelParams = [
       "quiet"
       "splash"
+      # TODO: see if we want to drop
+      "i915.enable_dpcd_backlight=1"
+      "acpi_backlight=native"
     ];
     loader = {
       systemd-boot.enable = true;
@@ -116,8 +119,6 @@
     };
   };
 
-  # This setups a SSH server. Very important if you're setting up a headless system.
-  # Feel free to remove if you don't need it.
   services = {
     # Intercepts calls to traditional paths
     envfs.enable = true;
